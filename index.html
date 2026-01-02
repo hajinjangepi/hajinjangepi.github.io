@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hajin Jang - Academic Homepage</title>
+    <meta name="description" content="Academic homepage of Hajin Jang" />
+
+    <!-- Icons (Font Awesome) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      :root{
+        --bg: #ffffff;
+        --text: #101828;
+        --muted: #667085;
+        --border: #eaecf0;
+        --card: #ffffff;
+        --shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+        --accent: #0b76ff;
+
+        /* navy for all section titles */
+        --navy: #0b1f4b;
+
+        /* indigo blue for school names */
+        --indigo: #2b3a8a;
+
+        --radius: 14px;
+        --max: 1100px;
+        --sidebar: 340px;
+        --font: "Aptos", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+
+      *{ box-sizing: border-box; }
+      html, body{ height: 100%; }
+      body{
+        margin: 0;
+        font-family: var(--font);
+        color: var(--text);
+        background: #ffffff;
+      }
+
+      a{ color: inherit; text-decoration: none; }
+      a:hover{ color: var(--accent); }
+      .container{
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 28px 18px;
+      }
+
+      /* Layout */
+      .grid{
+        display: grid;
+        grid-template-columns: var(--sidebar) 1fr;
+        gap: 26px;
+        align-items: start;
+      }
+
+      @media (max-width: 980px){
+        .grid{ grid-template-columns: 1fr; }
+        .sidebar{ position: static !important; }
+      }
+
+      /* Sidebar */
+      .sidebar{
+        position: sticky;
+        top: 18px;
+      }
+      .card{
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .sidebar .card{
+        text-align: center;
+        padding: 22px;
+      }
+
+      .name{
+        font-size: 28px;
+        font-weight: 750;
+        letter-spacing: -0.4px;
+        margin: 0 0 6px 0;
+      }
+      .role{
+        margin: 0 0 14px 0;
+        color: var(--muted);
+        font-weight: 550;
+        line-height: 1.35;
+      }
+
+      .school-name{
+        color: var(--indigo);
+        font-weight: 700;
+      }
+
+      .contact-line{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #ffffff;
+        width: 100%;
+      }
+      .contact-line .text{
+        font-family: var(--mono);
+        font-size: 13px;
+        color: #1f2937;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .icon-row{
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .icon-btn{
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        display: grid;
+        place-items: center;
+        background: #ffffff;
+      }
+      .icon-btn:hover{
+        border-color: rgba(11, 118, 255, 0.35);
+        box-shadow: 0 10px 22px rgba(11, 118, 255, 0.12);
+        transform: translateY(-1px);
+        transition: 160ms ease;
+      }
+
+      .profile-photo-rect{
+        width: 240px;
+        height: 320px;
+        border-radius: 32px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 16px auto;
+        border: 1px solid #eaecf0;
+      }
+
+      /* Main */
+      .main{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .section{
+        padding: 22px 22px 16px 22px;
+      }
+
+      /* all section headings navy */
+      .section h2{
+        margin: 0 0 12px 0;
+        font-size: 18px;
+        letter-spacing: -0.2px;
+        color: var(--navy);
+      }
+      .section p{
+        margin: 0;
+        line-height: 1.7;
+        color: #1f2937;
+      }
+
+      .divider{
+        height: 1px;
+        background: var(--border);
+        margin: 18px 0;
+      }
+
+      /* Rows */
+      .block{
+        display: grid;
+        gap: 12px;
+      }
+      .row{
+        padding: 12px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #ffffff;
+      }
+      .row .top{
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .row .org{
+        font-weight: 700;
+        color: #111827;
+      }
+      /* school org color */
+      .row .org.school-name{
+        color: var(--indigo);
+      }
+
+      .row .meta{
+        color: #8b1e3f;
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .row .desc{
+        margin-top: 6px;
+        color: #374151;
+        line-height: 1.6;
+      }
+
+      /* Publications */
+      .pub{
+        margin-top: 10px;
+        display: grid;
+        gap: 10px;
+      }
+      .pub-item{
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #ffffff;
+      }
+      .pub-title{
+        font-weight: 700;
+        color: #111827;
+        line-height: 1.45;
+      }
+      .pub-title a{
+        color: inherit;
+        text-decoration: none;
+      }
+      .pub-title a:hover{
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      .pub-authors{
+        margin-top: 6px;
+        color: #374151;
+        line-height: 1.55;
+      }
+
+      /* Highlight my name in author lists */
+      .author-me{
+        color: #3f51b5;
+        font-weight: 700;
+      }
+
+      .pub-venue{
+        margin-top: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .tag{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(11, 118, 255, 0.25);
+        color: #0b76ff;
+        background: rgba(11, 118, 255, 0.06);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      /* List */
+      ul.clean{
+        margin: 0;
+        padding-left: 18px;
+        color: #1f2937;
+        line-height: 1.7;
+      }
+      ul.clean li{ margin: 6px 0; }
+
+      /* Footer */
+      .footer{
+        padding: 14px 22px;
+        color: var(--muted);
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      /* Top nav (mobile friendly) */
+      .topnav{
+        display: none;
+        margin-bottom: 10px;
+      }
+      @media (max-width: 980px){
+        .topnav{ display: block; }
+        .topnav .card{ padding: 12px; }
+        .jump{
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .jump a{
+          font-size: 12px;
+          padding: 8px 10px;
+          border: 1px solid var(--border);
+          border-radius: 999px;
+          background: #ffffff;
+        }
+      }
+
+      section{ scroll-margin-top: 16px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Mobile top nav -->
+      <div class="topnav">
+        <div class="card">
+          <div class="jump">
+            <a href="#about">About</a>
+            <a href="#interests">Research Interests</a>
+            <a href="#education">Education</a>
+            <a href="#appointments">Appointments</a>
+            <a href="#publications">Publications</a>
+            <a href="#presentations">Presentations</a>
+            <a href="#vitae">CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="card">
+            <img
+              src="profile.jpg?v=20260101"
+              width="240"
+              height="360"
+              alt="Profile photo"
+              class="profile-photo-rect"
+            />
+
+            <h1 class="name">Hajin Jang, MPH</h1>
+            <p class="role">
+              PhD Candidate in Epidemiology (expected 2026)<br />
+              <span class="school-name">University of Pittsburgh</span>
+            </p>
+
+            <a class="contact-line" href="mailto:Haj90@pitt.edu" aria-label="Email">
+              <i class="fa-regular fa-envelope"></i>
+              <span class="text">Haj90@pitt.edu</span>
+            </a>
+
+            <div class="contact-line" style="margin-top: 10px;" aria-label="Location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="text" title="348 Bellefield Professional Building, 130 N Bellefield Ave, Pittsburgh, PA">
+                Pittsburgh, PA
+              </span>
+            </div>
+
+            <div class="icon-row" aria-label="Links">
+              <a class="icon-btn" href="CV_Hajin_Jang.pdf" title="Download CV (PDF)">
+                <i class="fa-solid fa-download"></i>
+              </a>
+
+              <a class="icon-btn" href="https://scholar.google.com/citations?user=l1a3ZUQAAAAJ&hl=en" title="Google Scholar">
+                <i class="fa-brands fa-google-scholar"></i>
+              </a>
+              <a class="icon-btn" href="https://www.linkedin.com/in/hajinjang-epidemiology/" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a class="icon-btn" href="https://github.com/hajinjang-epi?tab=repositories" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+          <section id="about" class="card section">
+            <h2>About</h2>
+            <p style="margin-bottom:14px;">
+              I am a PhD candidate in Epidemiology at the University of Pittsburgh, focusing on Aging Epidemiology under the mentorship of 
+              <a href="https://www.publichealth.pitt.edu/people/elsa-s-strotmeyer"
+                target="_blank"
+                style="color:#3f51b5; font-weight:600; text-decoration:none;">
+                Dr. Elsa S. Strotmeyer
+              </a>.
+            </p>
+            <p style="margin-bottom:14px;">
+              My research lives at the intersection of obesity and healthy aging. I study body composition phenotypes and how they shape geriatric outcomes such as falls and functional decline—because not all obesity (or aging) looks the same.
+            </p>
+            <p>
+              I am particularly drawn to advanced statistical analysis and modeling using large-scale, longitudinal population-based data. Much of my work involves data harmonization, risk factor identification, and prediction modeling across multiple aging cohorts. I primarily work in R and SAS, and I am actively expanding my toolkit into ML-based prediction modeling using Python.
+            </p>
+
+          </section>
+
+          <section id="interests" class="card section">
+            <h2>Research Interests</h2>
+            <ul class="clean">
+              <li>Obesity phenotyping and multimodal evaluation of body composition</li>
+              <li>Large-scale health data analysis / cross-cohort harmonization</li>
+              <li>Functional safety and risk prediction modeling for mobility-related outcomes in aging populations</li>
+            </ul>
+          </section>
+
+          <section id="education" class="card section">
+            <h2>Education</h2>
+            <div class="block">
+              <div class="row">
+                <div class="top">
+                  <div class="org school-name">University of Pittsburgh</div>
+                  <div class="meta">2023 - 2026 (expected)</div>
+                </div>
+                <div class="desc">PhD in Epidemiology (expected 2026) | Pittsburgh, PA</div>
+              </div>
+
+              <div class="row">
+                <div class="top">
+                  <div class="org school-name">Korea University</div>
+                  <div class="meta">2020 - 2022</div>
+                </div>
+                <div class="desc">MPH in Epidemiology and Risk Management | Seoul, Korea</div>
+              </div>
+
+              <div class="row">
+                <div class="top">
+                  <div class="org school-name">Korea University</div>
+                  <div class="meta">2015 - 2020</div>
+                </div>
+                <div class="desc">BA in Health Policy and Management, BEcon in Statistics | Seoul, Korea</div>
+              </div>
+            </div>
+          </section>
+
+          <section id="appointments" class="card section">
+            <h2>Appointments and Positions</h2>
+            <div class="block">
+              <div class="row">
+                <div class="top">
+                  <div class="org">Graduate Student Researcher</div>
+                  <div class="meta">2023 - Present</div>
+                </div>
+                <div class="desc">Center for Aging and Population Health (CAPH), University of Pittsburgh</div>
+              </div>
+
+              <div class="row">
+                <div class="top">
+                  <div class="org">Research Assistant</div>
+                  <div class="meta">2019 - 2022</div>
+                </div>
+                <div class="desc">Chronic Disease Epidemiology Lab, Korea University</div>
+              </div>
+
+              <div class="row">
+                <div class="top">
+                  <div class="org">Undergraduate Research Assistant</div>
+                  <div class="meta">2016 - 2017</div>
+                </div>
+                <div class="desc">Environmental Epidemiology Lab, Korea University</div>
+              </div>
+            </div>
+          </section>
+
+          <section id="publications" class="card section">
+            <h2>Publications</h2>
+
+            <div class="pub">
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Chrononutrition%20Patterns%20in%20People%20Who%20Attempted%20Weight%20Loss%20in%20the%20Past%20Year_A%20Descriptive%20Analysis%20of%20NHANES%202017-2020%20Pre-Pandemic.pdf" target="_blank" rel="noopener">
+                    Chrononutrition Patterns in People Who Attempted Weight Loss in the Past Year: A Descriptive Analysis of NHANES 2017-2020 Pre-Pandemic
+                  </a>
+                </div>
+                <div class="pub-authors">Kim N*, <span class="author-me">Jang H*</span>, Hawkins H. (*Co-first authors)</div>
+                <div class="pub-venue"><span>Dietetics. 2025 Jun 3. 4(2):24.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Screen%20time%20and%20obesity%20prevalence%20in%20adolescents_an%20isotemporal%20substitution%20analysis.pdf" target="_blank" rel="noopener">
+                    Screen time and obesity prevalence in adolescents: an isotemporal substitution analysis
+                  </a>
+                </div>
+                <div class="pub-authors">Byun D, Kim Y, <span class="author-me">Jang H</span>, Oh H.</div>
+                <div class="pub-venue"><span>BMC Public Health. 2024 Nov 12. 24(1):3130.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Recreational%20screen%20time%20and%20obesity%20risk%20in%20Korean%20children_a%203-year%20prospective%20cohort%20study.pdf" target="_blank" rel="noopener">
+                    Recreational screen time and obesity risk in Korean children: a 3-year prospective cohort study
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Cho Y, Oh H.</div>
+                <div class="pub-venue"><span>International Journal of Behavioral Nutrition and Physical Activity. 2024 Sep 30. 21(1):112</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Aerobic,%20muscle-strengthening,%20and%20flexibility%20physical%20activity%20and%20risks%20of%20all-cause%20and%20cause-specific%20mortality_a%20population-based%20prospective%20cohort%20of%20Korean%20adults.pdf" target="_blank" rel="noopener">
+                    Aerobic, muscle-strengthening, and flexibility physical activity and risks of all-cause and cause-specific mortality: a population-based prospective cohort of Korean adults
+                  </a>
+                </div>
+                <div class="pub-authors">Cho Y, <span class="author-me">Jang H</span>, Kwon S, Oh H.</div>
+                <div class="pub-venue"><span>BMC Public Health. 2023 Jun 14. 23(1):1148.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Overall%20and%20Abdominal%20Obesity%20and%20Risks%20of%20All-Cause%20and%20Cause-Specific%20Mortality%20in%20Korean%20Adults_A%20Pooled%20Analysis%20of%20Three%20Population-Based%20Prospective%20Cohorts.pdf" target="_blank" rel="noopener">
+                    Overall and Abdominal Obesity and Risks of All-Cause and Cause-Specific Mortality in Korean Adults: A Pooled Analysis of Three Population-Based Prospective Cohorts
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Kim R, Lee J, Lee D, Giovannucci E, Oh H.</div>
+                <div class="pub-venue"><span>International Journal of Epidemiology. 2023 Aug 2. 52(4):1060-1073.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Smartphone%20Usage%20Patterns%20and%20Dietary%20Risk%20Factors%20in%20Adolescents.pdf" target="_blank" rel="noopener">
+                    Smartphone Usage Patterns and Dietary Risk Factors in Adolescents
+                  </a>
+                </div>
+                <div class="pub-authors">Ryu S, <span class="author-me">Jang H</span>, Oh H.</div>
+                <div class="pub-venue"><span>The Journal of Nutrition. 2022 Sep 6. 152(9):2109-2116.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Early-life%20body%20mass%20index%20and%20risks%20of%20breast,%20endometrial,%20and%20ovarian%20cancers_a%20dose-response%20meta-analysis%20of%20prospective%20studies.pdf" target="_blank" rel="noopener">
+                    Early-life body mass index and risks of breast, endometrial, and ovarian cancers: a dose-response meta-analysis of prospective studies
+                  </a>
+                </div>
+                <div class="pub-authors">Byun D, Hong S, Ryu S, Nam Y, <span class="author-me">Jang H</span>, Cho Y, Keum N, Oh H.</div>
+                <div class="pub-venue"><span>British Journal of Cancer. 2022 Nov 12. 126(4):664-672.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Trends%20and%20Inequalities%20in%20Overall%20and%20Abdominal%20Obesity%20by%20Sociodemographic%20Factors%20in%20Korean%20Adults,%201998-2018.pdf" target="_blank" rel="noopener">
+                    Trends and Inequalities in Overall and Abdominal Obesity by Sociodemographic Factors in Korean Adults, 1998-2018
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Oh H.</div>
+                <div class="pub-venue"><span>International Journal of Environmental Research and Public Health. 2021 Apr 14. 18(8):4162.</span></div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2>Working Papers</h2>
+            <div class="pub">
+              <div class="pub-item">
+                <div class="pub-title">
+                  Associations of Obesity Phenotypes with Incident Fall Rates: Results from the Objective Physical Activity and Cardiovascular Health in Older Women (OPACH)
+                </div>
+                <div class="pub-authors">
+                  <span class="author-me">Jang H</span>, Crandall CJ, Gore S, Hu C, LaCroix AZ, LaMonte MJ, Liu L, Freeland KS, Cauley JA, Stefanick ML, Schumacher BT, Strotmeyer ES.
+                </div>
+                <div class="pub-venue"><span>2025. (Under review at Journals of Gerontology Series A: Medical Sciences)</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  Association of Actigraphy-Measured Rest-Activity Rhythms with Obesity Phenotypes in the Osteoporotic Fractures in Men (MrOS) Study
+                </div>
+                <div class="pub-authors">
+                  <span class="author-me">Jang H*</span>, Song Y*, Kim N*, Strotmeyer ES, Glynn NW. (*Co-first authors)
+                </div>
+                <div class="pub-venue"><span>2025.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  Associations of Muscle Function with Recurrent and Injurious Falls in Older Adults: A Narrative Review
+                </div>
+                <div class="pub-authors">
+                  Heilmann NZ, <span class="author-me">Jang H</span>, Caserotti P, Cawthon PM, Weaver AA, Beavers KM, Ruppert KM, Nindl BC, Cauley JA, Strotmeyer ES.
+                </div>
+                <div class="pub-venue"><span>2025.</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="presentations" class="card section">
+            <h2>Presentations</h2>
+
+            <div class="divider"></div>
+            <h2>Oral Presentations</h2>
+            <div class="pub">
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="https://asbmr.confex.com/asbmr/2025/meetingapp.cgi/Paper/3742" target="_blank" rel="noopener">
+                    Associations of Obesity Phenotypes with Incident and Recurrent Falls in Older Adults: A Cross-Cohort Analysis
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  <span class="author-me">Jang H</span>, Freeland KS, Heilmann NZ, Langer LR, Roberts JE, Ensrud KE, LaCroix AZ, Schousboe JT, Newman AB, Cauley JA, Strotmeyer ES.
+                </div>
+                <div class="pub-venue"><span>ASBMR 2025 Annual Meeting. Seattle, WA, USA. 2025 Sep 5-8.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Obesity%20and%20Mortality%20in%20a%20Pooled%20Analysis%20of%20Three%20Prospective%20Cohorts%20of%20Korean%20Adults_Is%20Obesity%20Paradox%20the%20BMI%20Paradox.pdf" target="_blank" rel="noopener">
+                    Obesity and Mortality in a Pooled Analysis of Three Prospective Cohorts of Korean Adults: Is Obesity Paradox the BMI Paradox?
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Kim R, Lee JT, Lee DH, Giovannucci E, Oh H.</div>
+                <div class="pub-venue"><span>NUTRITION 2022 LIVE ONLINE, American Society for Nutrition, Rockville, MD, USA (virtual). 2022 Jun 14.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Obesity%20Transition%20and%20Inequalities%20by%20Sociodemographic%20Factors%20in%20Korean%20Adults,%201998-2018.pdf" target="_blank" rel="noopener">
+                    Obesity Transition and Inequalities by Sociodemographic Factors in Korean Adults, 1998-2018
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Oh H.</div>
+                <div class="pub-venue"><span>NUTRITION 2021 LIVE ONLINE, American Society for Nutrition, Rockville, MD, USA (virtual). 2021 Jun 7.</span></div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2>Poster Presentations</h2>
+            <div class="pub">
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Associations%20of%20Obesity%20Phenotypes%20with%20Incident%20and%20Recurrent%20Falls%20in%20Older%20Adults_A%20Cross-Cohort%20Analysis.pdf" target="_blank" rel="noopener">
+                    Associations of Obesity Phenotypes with Incident and Recurrent Falls in Older Adults: A Cross-Cohort Analysis
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  <span class="author-me">Jang H</span>, Freeland KS, Heilmann NZ, Langer LR, Roberts JE, Ensrud KE, LaCroix AZ, Schousboe JT, Newman AB, Cauley JA, Strotmeyer ES.
+                </div>
+                <div class="pub-venue"><span>Aging Research Day, Aging Institute, University of Pittsburgh. Pittsburgh, PA, USA. 2025 Nov 5.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Age%20and%20Sex%20Associations%20for%20Incident%20and%20Recurrent%20Falls%20from%201992-2016_A%20Cross-Cohort%20Analysis%20in%20Older%20Adults.pdf" target="_blank" rel="noopener">
+                    Age and Sex Associations for Incident and Recurrent Falls from 1992-2016: A Cross-Cohort Analysis in Older Adults
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Strotmeyer ES, <span class="author-me">Jang H</span>, Freeland KS, Heilmann NZ, Nye L, Roberts J, Ensrud KE, LaCroix AZ, Leslie WD, Newman AB, Cauley JA.
+                </div>
+                <div class="pub-venue"><span>ASBMR 2025 Annual Meeting. Seattle, WA, USA. 2025 Sep 5-8.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Associations%20of%20Obesity%20Phenotypes%20with%20Incident%20Fall%20Rates_Results%20from%20the%20Objective%20Physical%20Activity%20and%20Cardiovascular%20Health%20in%20Older%20Women%20(OPACH).pdf" target="_blank" rel="noopener">
+                    Associations of Obesity Phenotypes with Incident Fall Rates: Results from the Objective Physical Activity and Cardiovascular Health in Older Women (OPACH)
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  <span class="author-me">Jang H</span>, Crandall CJ, Gore S, Hu C, LaCroix AZ, LaMonte MJ, Liu L, Freeland KS, Cauley JA, Stefanick ML, Schumacher BT, Strotmeyer ES.
+                </div>
+                <div class="pub-venue">
+                  <span>ASBMR 2024 Annual Meeting. Toronto, ON, Canada. 2024 Sep 27. Plenary poster; invited symposium on energy metabolism in skeletal development and disease.</span>
+                </div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="The%20Joint%20Effects%20of%20Obesity%20and%20Physical%20Activity%20on%20All-cause%20and%20Cardiovascular%20Mortality_%E2%80%98Fat%20but%20Fit%E2%80%99%20Hypothesis.pdf" target="_blank" rel="noopener">
+                    The Joint Effects of Obesity and Physical Activity on All-cause and Cardiovascular Mortality: ‘Fat but Fit’ Hypothesis
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Oh H.</div>
+                <div class="pub-venue"><span>5th APCMS Congress. 2022 Apr 29. Outstanding Abstract Award Winner.</span></div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">
+                  <a href="Alcohol%20Drinking%20and%20Cardiovascular%20Risk%20Factors%20in%20Korean%20Adults_Age-Period-Cohort%20and%20Association%20Analyses.pdf" target="_blank" rel="noopener">
+                    Alcohol Drinking and Cardiovascular Risk Factors in Korean Adults: Age-Period-Cohort and Association Analyses
+                  </a>
+                </div>
+                <div class="pub-authors"><span class="author-me">Jang H</span>, Shin M, Oh H.</div>
+                <div class="pub-venue"><span>4th APCMS Congress. 2021 Apr 23. Outstanding Abstract Award Winner.</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="vitae" class="card section">
+            <h2>CV (PDF)</h2>
+            <p>
+              Download the full CV here:
+              <a class="tag" href="CV_Hajin_Jang.pdf" title="Download CV PDF">
+                <i class="fa-solid fa-download"></i> Download
+              </a>
+            </p>
+          </section>
+
+          <div class="card footer">
+            <div>© <span id="year"></span> Hajin Jang</div>
+            <div>Built with plain HTML and CSS</div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
